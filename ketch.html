@@ -22,9 +22,9 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .adot.active{background:#111}
 .instruction{font-size:13px;color:#666;margin-bottom:10px;line-height:1.5;min-height:20px}
 
-/* chart scroll container */
-.chart-scroll-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:8px}
-.chart-scroll-wrap svg{display:block}
+/* chart container — no horizontal scroll, fits screen */
+.chart-wrap{width:100%;margin-bottom:8px;overflow:hidden}
+.chart-wrap svg{display:block;width:100%}
 
 /* desktop layout */
 @media(min-width:520px){
@@ -35,9 +35,10 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 }
 @media(max-width:519px){
   .desktop-only{display:none!important}
+  .desktop-layout{display:block}
 }
 
-/* race schedule inline */
+/* race schedule inline (desktop) */
 .race-schedule-panel{background:#f8f8f8;border:1px solid #eee;border-radius:10px;padding:10px 12px;margin-top:8px}
 .rsp-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
 .rsp-row{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #f0f0f0;align-items:baseline}
@@ -46,7 +47,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .rsp-label{font-size:12px;font-weight:600;min-width:88px;flex-shrink:0}
 .rsp-desc{font-size:11px;color:#888;line-height:1.4}
 
-/* stats sidebar */
+/* stats sidebar (desktop) */
 .stats-panel{background:#f5f5f5;border-radius:10px;padding:8px}
 .stats-panel-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
 .stat-entry{margin-bottom:8px}
@@ -59,7 +60,6 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .bar-fill{height:3px;border-radius:2px}
 .stat-num{min-width:12px;text-align:right;font-size:9px}
 
-/* submit button */
 .btn{display:block;width:100%;border:1px solid #aaa;border-radius:10px;padding:14px 20px;font-size:16px;cursor:pointer;color:#111;text-align:center;margin-top:10px;background:#fff;-webkit-appearance:none;appearance:none}
 .btn-primary{background:#111;color:#fff;border-color:#111}
 .divider{border:none;border-top:1px solid #eee;margin:1rem 0}
@@ -70,7 +70,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .panel-title{font-size:17px;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
 .close-btn{font-size:26px;line-height:1;background:none;border:none;color:#999;cursor:pointer;padding:0 4px}
 
-/* popup field cards */
+/* teams popup */
 .popup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
 .popup-card{background:#f5f5f5;border-radius:10px;padding:10px 12px}
 .popup-card-name{font-size:13px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px}
@@ -81,21 +81,16 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .popup-bar-fill{height:4px;border-radius:2px}
 .popup-bar-num{min-width:16px;text-align:right}
 
-/* popup races */
-.popup-race-row{padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;gap:12px}
-.popup-race-row:last-child{border-bottom:none}
-.popup-race-num{font-size:13px;color:#ccc;width:20px;flex-shrink:0;padding-top:1px}
-.popup-race-label{font-size:15px;font-weight:600;margin-bottom:3px}
-.popup-race-desc{font-size:13px;color:#666;line-height:1.5}
-
-/* hints */
+/* race hints popup — combined desc + weights */
+.hints-race-block{padding:12px 0;border-bottom:1px solid #f0f0f0}
+.hints-race-block:last-child{border-bottom:none}
+.hints-race-head{display:flex;gap:10px;align-items:baseline;margin-bottom:5px}
+.hints-race-num{font-size:12px;color:#ccc;width:18px;flex-shrink:0}
+.hints-race-label{font-size:15px;font-weight:600}
+.hints-race-desc{font-size:13px;color:#666;line-height:1.5;margin-bottom:6px;padding-left:28px}
+.hints-chips{padding-left:28px}
 .wchip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:#f0f0f0;border:1px solid #e0e0e0;color:#666;margin:2px 2px 0 0}
 .wchip.high{background:#FEF3E2;color:#B45309;border-color:#F59E0B}
-.hints-row{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f0f0f0;align-items:flex-start}
-.hints-row:last-child{border-bottom:none}
-.hints-num{font-size:12px;color:#ccc;width:18px;flex-shrink:0}
-.hints-label{font-size:13px;font-weight:600;min-width:90px;flex-shrink:0}
-.hints-chips{flex:1}
 
 /* reveal */
 .reveal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.55);z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px}
@@ -109,7 +104,8 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .rev-hint{font-size:12px;color:#999}
 .rev-badge{font-size:11px;padding:3px 10px;border-radius:20px;white-space:nowrap}
 .rev-badge.locked{background:#FEF3E2;color:#B45309;border:1px solid #F59E0B}
-.rev-badge.miss{background:#f5f5f5;color:#888;border:1px solid #eee}
+.rev-badge.incomplete{background:#f5f5f5;color:#888;border:1px solid #eee}
+.rev-badge.chain{background:#EEF2FF;color:#4338CA;border:1px solid #A5B4FC}
 .reveal-btn{display:block;width:100%;margin-top:16px;padding:14px;border-radius:10px;background:#111;color:#fff;border:none;font-size:15px;cursor:pointer;text-align:center}
 
 /* final */
@@ -131,8 +127,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
   <div class="top-bar">
     <span class="game-title">Ketch</span>
     <div class="top-btns">
-      <button class="panel-btn mobile-only" onclick="openPanel('panel-field')">field</button>
-      <button class="panel-btn mobile-only" onclick="openPanel('panel-races')">races</button>
+      <button class="panel-btn" onclick="openPanel('panel-teams')">teams</button>
       <button class="panel-btn" onclick="openPanel('panel-hints')">race hints</button>
     </div>
   </div>
@@ -147,7 +142,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 
   <div class="desktop-layout">
     <div class="chart-col">
-      <div class="chart-scroll-wrap" id="chart-scroll-wrap">
+      <div class="chart-wrap" id="chart-wrap">
         <svg id="bump-svg"></svg>
       </div>
       <div class="race-schedule-panel desktop-only">
@@ -157,7 +152,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
     </div>
     <div class="stats-col desktop-only">
       <div class="stats-panel">
-        <div class="stats-panel-title">field</div>
+        <div class="stats-panel-title">teams</div>
         <div id="stats-entries"></div>
       </div>
     </div>
@@ -166,27 +161,18 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
   <button class="btn btn-primary" id="submit-btn" onclick="submitPrediction()">submit prediction →</button>
 </div>
 
-<!-- field popup -->
-<div class="overlay hidden" id="panel-field">
+<!-- teams popup -->
+<div class="overlay hidden" id="panel-teams">
   <div class="panel">
-    <div class="panel-title">field <button class="close-btn" onclick="closePanel('panel-field')">×</button></div>
-    <div class="popup-grid" id="popup-field-grid"></div>
+    <div class="panel-title">teams <button class="close-btn" onclick="closePanel('panel-teams')">×</button></div>
+    <div class="popup-grid" id="popup-teams-grid"></div>
   </div>
 </div>
 
-<!-- races popup -->
-<div class="overlay hidden" id="panel-races">
-  <div class="panel">
-    <div class="panel-title">race schedule <button class="close-btn" onclick="closePanel('panel-races')">×</button></div>
-    <div id="popup-races-list"></div>
-  </div>
-</div>
-
-<!-- race hints popup -->
+<!-- race hints popup (desc + weights combined) -->
 <div class="overlay hidden" id="panel-hints">
   <div class="panel">
     <div class="panel-title">race hints <button class="close-btn" onclick="closePanel('panel-hints')">×</button></div>
-    <p style="font-size:13px;color:#888;margin-bottom:14px;font-style:italic" id="hints-intro"></p>
     <div id="hints-list"></div>
   </div>
 </div>
@@ -318,16 +304,14 @@ function newGame(){
   document.getElementById('screen-main').classList.remove('hidden');
   document.getElementById('screen-final').classList.add('hidden');
   document.getElementById('reveal-overlay').classList.add('hidden');
-  // defer chart draw until layout is painted
-  setTimeout(drawChart,50);
+  setTimeout(drawChart,60);
 }
 
 function renderUI(){
   renderAttempts();
   renderDesktopStats();
   renderDesktopRaces();
-  renderPopupField();
-  renderPopupRaces();
+  renderTeamsPopup();
   renderHints();
 }
 
@@ -358,8 +342,8 @@ function renderDesktopRaces(){
     </div>`).join('');
 }
 
-function renderPopupField(){
-  document.getElementById('popup-field-grid').innerHTML=game.competitors.map(c=>`
+function renderTeamsPopup(){
+  document.getElementById('popup-teams-grid').innerHTML=game.competitors.map(c=>`
     <div class="popup-card">
       <div class="popup-card-name"><span class="stat-dot" style="background:${c.color};width:9px;height:9px"></span><span style="color:${c.color}">${c.name}</span></div>
       ${STAT_KEYS.map(k=>`<div class="popup-bar-row">
@@ -370,26 +354,17 @@ function renderPopupField(){
     </div>`).join('');
 }
 
-function renderPopupRaces(){
-  document.getElementById('popup-races-list').innerHTML=game.races.map((r,i)=>`
-    <div class="popup-race-row">
-      <span class="popup-race-num">${i+1}</span>
-      <div>
-        <div class="popup-race-label">${r.label}</div>
-        <div class="popup-race-desc">${r.desc}</div>
-      </div>
-    </div>`).join('');
-}
-
 function renderHints(){
-  const intros=["Each race rewards different strengths — use these weights to guide your predictions.","A stamina specialist thrives on endurance stages but fades in a sprint.","Tactics matter most when the field is evenly matched."];
-  document.getElementById('hints-intro').textContent=pick(intros);
+  // Combined: description + attribute weights per race
   document.getElementById('hints-list').innerHTML=game.races.map((r,i)=>{
     const chips=Object.entries(r.w).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
       `<span class="wchip ${v>=0.35?'high':''}">${STAT_LABELS[k]} ${Math.round(v*100)}%</span>`).join('');
-    return`<div class="hints-row">
-      <span class="hints-num">${i+1}</span>
-      <span class="hints-label">${r.label}</span>
+    return`<div class="hints-race-block">
+      <div class="hints-race-head">
+        <span class="hints-race-num">${i+1}</span>
+        <span class="hints-race-label">${r.label}</span>
+      </div>
+      <div class="hints-race-desc">${r.desc}</div>
       <div class="hints-chips">${chips}</div>
     </div>`;
   }).join('');
@@ -397,18 +372,20 @@ function renderHints(){
 
 function setInstruction(t){document.getElementById('instruction').textContent=t}
 
-// CHART
-const CH=280,PADT=20,PADB=26,DOT_R=10;
-const MIN_CHART_W=460;
+// ── CHART ─────────────────────────────────────────────────────
+// No right-side labels, no horizontal scroll — fits within screen
+// Vertical race name labels under each column
+const CH=300,PADT=20,PADB=50,DOT_R=10; // extra PADB for vertical labels
 
 function getChartW(){
-  const wrap=document.getElementById('chart-scroll-wrap');
-  const naturalW=wrap?wrap.getBoundingClientRect().width:window.innerWidth-24;
-  return Math.max(naturalW,MIN_CHART_W);
+  const wrap=document.getElementById('chart-wrap');
+  return wrap?wrap.getBoundingClientRect().width||window.innerWidth-24:window.innerWidth-24;
 }
-function getPad(){return window.innerWidth<520?56:64}
-function colX(ci,W,PAD){return PAD+ci*((W-PAD*2)/(NCOLS-1))}
+function getPADL(){return window.innerWidth<520?52:62}
+function getPADR(){return 16} // no right labels needed, just a small margin
+function colX(ci,W,PADL,PADR){return PADL+ci*((W-PADL-PADR)/(NCOLS-1))}
 function rowY(row){return PADT+row*((CH-PADT-PADB)/(NC-1))}
+
 function se(tag,attrs){
   const e=document.createElementNS('http://www.w3.org/2000/svg',tag);
   for(const[k,v]of Object.entries(attrs))e.setAttribute(k,String(v));
@@ -418,7 +395,7 @@ function se(tag,attrs){
 function drawChart(){
   const svg=document.getElementById('bump-svg');
   const W=getChartW();
-  const PAD=getPad();
+  const PADL=getPADL(),PADR=getPADR();
   svg.setAttribute('viewBox',`0 0 ${W} ${CH}`);
   svg.setAttribute('width',String(W));
   svg.setAttribute('height',String(CH));
@@ -427,23 +404,42 @@ function drawChart(){
 
   const rows=computeRows();
   const colorOf=Object.fromEntries(game.competitors.map(c=>[c.name,c.color]));
-  const cx=ci=>colX(ci,W,PAD);
+  const cx=ci=>colX(ci,W,PADL,PADR);
 
   // grid
   for(let r=0;r<NC;r++){
-    svg.appendChild(se('line',{x1:PAD,y1:rowY(r),x2:W-PAD,y2:rowY(r),stroke:'#ebebeb','stroke-width':0.5}));
+    svg.appendChild(se('line',{x1:PADL,y1:rowY(r),x2:W-PADR,y2:rowY(r),stroke:'#ebebeb','stroke-width':0.5}));
   }
 
-  // col labels
+  // vertical race name labels + race number above chart
   for(let ci=0;ci<NCOLS;ci++){
-    const fin=ci===NR,lock=!fin&&lockedRaces.includes(ci);
-    const t=se('text',{x:cx(ci),y:CH-6,'text-anchor':'middle','font-size':9,
-      fill:lock?'#B45309':fin?'#111':'#aaa'});
-    t.textContent=fin?'Final':lock?`R${ci+1}▲`:`R${ci+1}`;
-    svg.appendChild(t);
+    const isFinal=ci===NR;
+    const locked=!isFinal&&lockedRaces.includes(ci);
+    const x=cx(ci);
+
+    if(isFinal){
+      // "Final" written horizontally at bottom
+      const t=se('text',{x,y:CH-6,'text-anchor':'middle','font-size':9,fill:'#111','font-weight':600});
+      t.textContent='Final';
+      svg.appendChild(t);
+    } else {
+      // Race number at top
+      const rnum=se('text',{x,y:12,'text-anchor':'middle','font-size':9,fill:locked?'#B45309':'#bbb'});
+      rnum.textContent=locked?`R${ci+1}▲`:`R${ci+1}`;
+      svg.appendChild(rnum);
+
+      // Race name written vertically below chart area
+      const raceName=game.races[ci].label;
+      const g=se('g',{transform:`translate(${x},${CH-8}) rotate(-45)`});
+      const t=se('text',{'text-anchor':'end','dominant-baseline':'middle','font-size':9,
+        fill:locked?'#B45309':'#888','font-weight':locked?600:400});
+      t.textContent=raceName;
+      g.appendChild(t);
+      svg.appendChild(g);
+    }
   }
 
-  // competitors
+  // competitor paths — left label only, no right label
   game.competitors.forEach(comp=>{
     const {name,color}=comp,isSel=selComp===name;
     const ra=rows[name];
@@ -452,12 +448,10 @@ function drawChart(){
     svg.appendChild(se('path',{d,fill:'none',stroke:color,'stroke-width':isSel?3.5:2.5,
       'stroke-linecap':'round','stroke-linejoin':'round',opacity:isSel?1:0.8}));
 
-    // left label (fixed)
-    const lt=se('text',{x:PAD-DOT_R-5,y:rowY(ra[0]),'text-anchor':'end','dominant-baseline':'middle','font-size':11,'font-weight':600,fill:color});
+    // left label only
+    const lt=se('text',{x:PADL-DOT_R-5,y:rowY(ra[0]),'text-anchor':'end','dominant-baseline':'middle',
+      'font-size':11,'font-weight':600,fill:color});
     lt.textContent=name;svg.appendChild(lt);
-    // right label (follows final)
-    const rt=se('text',{x:W-PAD+DOT_R+5,y:rowY(ra[NR]),'text-anchor':'start','dominant-baseline':'middle','font-size':11,'font-weight':600,fill:color});
-    rt.textContent=name;svg.appendChild(rt);
 
     // dots
     for(let ci=0;ci<NR;ci++){
@@ -486,7 +480,8 @@ function drawChart(){
       const row=pos.indexOf(bumper);if(row<1)continue;
       const x=cx(ri),my=(rowY(row)+rowY(row-1))/2,color=colorOf[bumper];
       const bg=se('circle',{cx:x,cy:my,r:10,fill:color,stroke:'#fff','stroke-width':2,cursor:'pointer'});
-      const xt=se('text',{x,y:my,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,'font-weight':700,fill:'#fff','pointer-events':'none'});
+      const xt=se('text',{x,y:my,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,'font-weight':700,
+        fill:'#fff','pointer-events':'none'});
       xt.textContent='×';
       bg.addEventListener('click',e=>{e.stopPropagation();removeBump(ri,bumper)});
       bg.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();removeBump(ri,bumper)},{passive:false});
@@ -498,14 +493,15 @@ function drawChart(){
   if(selComp&&selRace!==null&&!lockedRaces.includes(selRace)){
     const row=rows[selComp][selRace];
     const x=cx(selRace),pos=orderAtCol(selRace);
-    const hitR=14;
+    const hitR=15;
 
     if(row>0&&!bumps[selRace].has(selComp)){
       const ty=rowY(row-1);
       svg.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
-        stroke:'rgba(0,0,0,0.22)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
+        stroke:'rgba(0,0,0,0.2)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
       const hit=se('circle',{cx:x,cy:ty,r:hitR,fill:'rgba(0,0,0,0)',cursor:'pointer'});
-      const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':11,fill:'rgba(0,0,0,0.28)','pointer-events':'none'});
+      const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,
+        fill:'rgba(0,0,0,0.25)','pointer-events':'none'});
       lbl.textContent='▲';
       hit.addEventListener('click',e=>{e.stopPropagation();addBump(selRace,selComp)});
       hit.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();addBump(selRace,selComp)},{passive:false});
@@ -516,9 +512,10 @@ function drawChart(){
       if(below&&!bumps[selRace].has(below)){
         const ty=rowY(row+1);
         svg.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
-          stroke:'rgba(0,0,0,0.22)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
+          stroke:'rgba(0,0,0,0.2)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
         const hit=se('circle',{cx:x,cy:ty,r:hitR,fill:'rgba(0,0,0,0)',cursor:'pointer'});
-        const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':11,fill:'rgba(0,0,0,0.28)','pointer-events':'none'});
+        const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,
+          fill:'rgba(0,0,0,0.25)','pointer-events':'none'});
         lbl.textContent='▼';
         hit.addEventListener('click',e=>{e.stopPropagation();addBump(selRace,below)});
         hit.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();addBump(selRace,below)},{passive:false});
@@ -562,39 +559,52 @@ function submitPrediction(){
   const pred=Array.from({length:NR},(_,ri)=>orderAtCol(ri+1));
   attemptHistory.push(pred.map(c=>[...c]));
   attempt++;
+
+  // find how far the consecutive lock chain reaches
+  let newLockUpTo=-1;
   for(let ri=0;ri<NR;ri++){
-    if(lockedRaces.includes(ri))continue;
-    if(ri>0&&!lockedRaces.includes(ri-1))break;
+    if(lockedRaces.includes(ri)){newLockUpTo=ri;continue;}
     const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
-    if(pred[ri].every((n,i)=>actual[i]===n))lockedRaces.push(ri);
+    if(pred[ri].every((n,i)=>actual[i]===n)){lockedRaces.push(ri);newLockUpTo=ri;}
     else break;
   }
+
   const solved=lockedRaces.length===NR,failed=attempt>=MAX_ATT&&!solved;
   selComp=null;selRace=null;
   renderAttempts();drawChart();
-  showReveal(solved,failed);
+  showReveal(solved,failed,pred);
 }
 
-function showReveal(solved,failed){
+function showReveal(solved,failed,pred){
   document.getElementById('rev-title').textContent=`Attempt ${attempt} result`;
   const lk=lockedRaces.length;
   document.getElementById('rev-sub').textContent=
     solved?'All races correct — well done!'
     :failed?`Game over. ${lk} of ${NR} races correct.`
     :`${lk} of ${NR} race${lk!==1?'s':''} locked.${lk>0?' Keep going!':' Try again.'}`;
-  const last=attemptHistory[attemptHistory.length-1];
+
+  // find first unlocked race — everything after that can't lock due to chain rule
+  const firstUnlocked=Array.from({length:NR},(_,i)=>i).find(ri=>!lockedRaces.includes(ri));
+
   document.getElementById('rev-rows').innerHTML=game.races.map((_,ri)=>{
     const locked=lockedRaces.includes(ri);
     const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
-    const correct=last[ri].filter((n,i)=>actual[i]===n).length;
+    const correct=pred[ri].filter((n,i)=>actual[i]===n).length;
+    // chain-blocked = correct (or not) but can't lock because an earlier race hasn't locked
+    const chainBlocked=!locked&&ri>0&&!lockedRaces.includes(ri-1)&&firstUnlocked!==undefined&&ri>firstUnlocked;
+    let badgeClass,badgeText;
+    if(locked){badgeClass='locked';badgeText='locked ▲';}
+    else if(chainBlocked){badgeClass='chain';badgeText='race 1 first';}
+    else{badgeClass='incomplete';badgeText='incomplete';}
     return`<div class="rev-row">
       <span class="rev-label">Race ${ri+1} — ${game.races[ri].label}</span>
       <div class="rev-right">
         ${!locked?`<span class="rev-hint">${correct}/${NC}</span>`:''}
-        <span class="rev-badge ${locked?'locked':'miss'}">${locked?'locked ▲':'no match'}</span>
+        <span class="rev-badge ${badgeClass}">${badgeText}</span>
       </div>
     </div>`;
   }).join('');
+
   const btn=document.getElementById('rev-btn');
   if(solved||failed){
     btn.textContent='see final result →';
