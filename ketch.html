@@ -23,8 +23,8 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .instruction{font-size:13px;color:#666;margin-bottom:10px;line-height:1.5;min-height:20px}
 
 /* chart container — no horizontal scroll, fits screen */
-.chart-wrap{width:100%;margin-bottom:8px;overflow:hidden}
-.chart-wrap svg{display:block;width:100%}
+.chart-wrap{width:100%;margin-bottom:50px;overflow:hidden}
+.chart-wrap svg{display:block;width:100%; overflow: visible}
 
 /* desktop layout */
 @media(min-width:520px){
@@ -375,7 +375,7 @@ function setInstruction(t){document.getElementById('instruction').textContent=t}
 // ── CHART ─────────────────────────────────────────────────────
 // No right-side labels, no horizontal scroll — fits within screen
 // Vertical race name labels under each column
-const CH=300,PADT=20,PADB=50,DOT_R=10; // extra PADB for vertical labels
+const CH=340,PADT=30,PADB=110,DOT_R=10; // extra PADB for vertical labels
 
 function getChartW(){
   const wrap=document.getElementById('chart-wrap');
@@ -424,13 +424,17 @@ function drawChart(){
       svg.appendChild(t);
     } else {
       // Race number at top
-      const rnum=se('text',{x,y:12,'text-anchor':'middle','font-size':9,fill:locked?'#B45309':'#bbb'});
+      const rnum=se('text',{x,y:PADT - 15,'text-anchor':'middle','font-size':9,fill:locked?'#B45309':'#bbb'});
       rnum.textContent=locked?`R${ci+1}▲`:`R${ci+1}`;
       svg.appendChild(rnum);
 
       // Race name written vertically below chart area
       const raceName=game.races[ci].label;
-      const g=se('g',{transform:`translate(${x},${CH-8}) rotate(-45)`});
+      const LABEL_Y = CH - PADB + 25;
+
+const g = se('g', {
+  transform: `translate(${x}, ${LABEL_Y}) rotate(-45)`
+});
       const t=se('text',{'text-anchor':'end','dominant-baseline':'middle','font-size':9,
         fill:locked?'#B45309':'#888','font-weight':locked?600:400});
       t.textContent=raceName;
@@ -662,3 +666,4 @@ window.addEventListener('load',newGame);
 </script>
 </body>
 </html>
+
