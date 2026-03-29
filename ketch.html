@@ -138,7 +138,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
     <span class="attempt-label" id="attempt-text">1 of 4</span>
   </div>
 
-  <p class="instruction" id="instruction">Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
+  <p class="instruction" id="instruction">Who will catch who in each race, and swap positions for the next stage?Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
 
   <div class="desktop-layout">
     <div class="chart-col">
@@ -534,7 +534,7 @@ function onDotClick(name,race){
   if(selComp===name&&selRace===race){selComp=null;selRace=null;}
   else{selComp=name;selRace=race;}
   setInstruction(selComp?`${selComp} selected — tap ▲ to bump up, ▼ to be bumped down, × to remove.`
-    :'Who will catch who in each race, and swap positions for the next stage? Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
+    : Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
   drawChart();
 }
 
