@@ -125,7 +125,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 
 <div class="screen" id="screen-main">
   <div class="top-bar">
-    <span class="game-title">Ketch- a game of pursuit</span>
+    <span class="game-title">Ketch</span>
     <div class="top-btns">
       <button class="panel-btn" onclick="openPanel('panel-teams')">teams</button>
       <button class="panel-btn" onclick="openPanel('panel-hints')">race hints</button>
@@ -138,7 +138,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
     <span class="attempt-label" id="attempt-text">1 of 4</span>
   </div>
 
-  <p class="instruction" id="instruction">Who will catch who in each race? Swap positions for the next race. Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
+  <p class="instruction" id="instruction">Who will catch whom in each race? Swap positions for the next round. Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
 
   <div class="desktop-layout">
     <div class="chart-col">
@@ -213,7 +213,7 @@ const RACE_TYPES=[
   {label:"The Long Haul",     desc:"A long grinding test — those without stamina will fade in the final stretch.",  w:{pow:0.20,agi:0.10,sta:0.60,tac:0.10}},
   {label:"Winder Trail",     desc:"A twisty, varying course — agility and tactics are everything here.",        w:{pow:0.10,agi:0.40,sta:0.10,tac:0.40}},
   {label:"Rough Gorge", desc:"Harsh, unforgiving terrain — power and stamina hold position.",                 w:{pow:0.45,agi:0.05,sta:0.40,tac:0.10}},
-  {label:"Multi Trail",      desc:"Many options, choice is key over this distance — tactics and stamina decide it.",           w:{pow:0.10,agi:0.10,sta:0.30,tac:0.50}},
+  {label:"Multi-trail",      desc:"Many options, choice is key over this distance — tactics and stamina decide it.",           w:{pow:0.10,agi:0.10,sta:0.30,tac:0.50}},
   {label:"Night Flight",    desc:"Low visibility and high pressure — agility and tactics come to the fore.",      w:{pow:0.10,agi:0.30,sta:0.20,tac:0.40}},
   {label:"The Climb",    desc:"Punishing elevation — power and stamina are the great levellers.",              w:{pow:0.40,agi:0.10,sta:0.45,tac:0.05}},
   {label:"Jungle Gym",   desc:"Climbs, jumps, predicting next steps — tactics and agility reward the smart mover.", w:{pow:0.10,agi:0.35,sta:0.15,tac:0.40}}
