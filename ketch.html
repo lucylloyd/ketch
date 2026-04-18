@@ -9,57 +9,18 @@
 html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;-webkit-tap-highlight-color:transparent}
 .hidden{display:none!important}
 .screen{padding:12px;max-width:680px;margin:0 auto}
-
 .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .game-title{font-size:22px;font-weight:700;letter-spacing:-0.5px}
 .top-btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .panel-btn{font-size:12px;padding:6px 12px;border:1px solid #bbb;border-radius:20px;background:#fff;cursor:pointer;color:#111;-webkit-appearance:none;appearance:none}
-
 .attempt-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .attempt-label{font-size:12px;color:#666}
 .adot{width:9px;height:9px;border-radius:50%;background:#ccc;display:inline-block}
 .adot.used{background:#999}
 .adot.active{background:#111}
 .instruction{font-size:13px;color:#666;margin-bottom:10px;line-height:1.5;min-height:20px}
-
-/* chart container — no horizontal scroll, fits screen */
-.chart-wrap{width:100%;margin-bottom:50px;overflow:hidden}
-.chart-wrap svg{display:block;width:100%; overflow: visible}
-
-/* desktop layout */
-@media(min-width:520px){
-  .desktop-layout{display:flex;gap:12px;align-items:flex-start}
-  .chart-col{flex:1;min-width:0}
-  .stats-col{width:120px;flex-shrink:0}
-  .mobile-only{display:none!important}
-}
-@media(max-width:519px){
-  .desktop-only{display:none!important}
-  .desktop-layout{display:block}
-}
-
-/* race schedule inline (desktop) */
-.race-schedule-panel{background:#f8f8f8;border:1px solid #eee;border-radius:10px;padding:10px 12px;margin-top:8px}
-.rsp-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
-.rsp-row{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #f0f0f0;align-items:baseline}
-.rsp-row:last-child{border-bottom:none}
-.rsp-num{font-size:11px;color:#ccc;width:14px;flex-shrink:0}
-.rsp-label{font-size:12px;font-weight:600;min-width:88px;flex-shrink:0}
-.rsp-desc{font-size:11px;color:#888;line-height:1.4}
-
-/* stats sidebar (desktop) */
-.stats-panel{background:#f5f5f5;border-radius:10px;padding:8px}
-.stats-panel-title{font-size:10px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
-.stat-entry{margin-bottom:8px}
-.stat-entry:last-child{margin-bottom:0}
-.stat-name-row{font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px;margin-bottom:3px}
-.stat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.stat-bar-row{display:flex;align-items:center;gap:4px;font-size:9px;color:#999;margin-bottom:2px}
-.stat-icon{width:12px;height:12px;flex-shrink:0}
-.bar-track{flex:1;height:3px;background:#ddd;border-radius:2px;overflow:hidden}
-.bar-fill{height:3px;border-radius:2px}
-.stat-num{min-width:12px;text-align:right;font-size:9px}
-
+.chart-wrap{width:100%;margin-bottom:8px;overflow:hidden}
+.chart-wrap svg{display:block;width:100%}
 .btn{display:block;width:100%;border:1px solid #aaa;border-radius:10px;padding:14px 20px;font-size:16px;cursor:pointer;color:#111;text-align:center;margin-top:10px;background:#fff;-webkit-appearance:none;appearance:none}
 .btn-primary{background:#111;color:#fff;border-color:#111}
 .divider{border:none;border-top:1px solid #eee;margin:1rem 0}
@@ -69,6 +30,13 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .panel{background:#fff;border-radius:16px 16px 0 0;padding:16px;width:100%;max-width:600px;max-height:80vh;overflow-y:auto}
 .panel-title{font-size:17px;font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
 .close-btn{font-size:26px;line-height:1;background:none;border:none;color:#999;cursor:pointer;padding:0 4px}
+
+/* info popup */
+.info-section{margin-bottom:20px}
+.info-section:last-child{margin-bottom:0}
+.info-section-title{font-size:13px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+.info-para{font-size:14px;color:#444;line-height:1.7;margin-bottom:8px}
+.info-para:last-child{margin-bottom:0}
 
 /* teams popup */
 .popup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
@@ -81,7 +49,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .popup-bar-fill{height:4px;border-radius:2px}
 .popup-bar-num{min-width:16px;text-align:right}
 
-/* race hints popup — combined desc + weights */
+/* race hints popup */
 .hints-race-block{padding:12px 0;border-bottom:1px solid #f0f0f0}
 .hints-race-block:last-child{border-bottom:none}
 .hints-race-head{display:flex;gap:10px;align-items:baseline;margin-bottom:5px}
@@ -109,16 +77,16 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .reveal-btn{display:block;width:100%;margin-top:16px;padding:14px;border-radius:10px;background:#111;color:#fff;border:none;font-size:15px;cursor:pointer;text-align:center}
 
 /* final */
-.score-big{font-size:28px;font-weight:700;margin-bottom:6px}
-.share-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-.share-lbl{font-size:12px;color:#999;width:65px;flex-shrink:0}
-.medal{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex-shrink:0}
+.score-big{font-size:26px;font-weight:700;margin-bottom:4px}
+.share-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.share-lbl{font-size:11px;color:#999;width:56px;flex-shrink:0}
+.medal{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
 .medal-gold{background:#F5C842;color:#78500A}
 .medal-silver{background:#C0C0C0;color:#3A3A3A}
 .medal-bronze{background:#CD7F32;color:#fff}
 .medal-none{background:#f0f0f0;border:1px solid #e0e0e0;color:#ccc}
-.legend{display:flex;gap:10px;margin:8px 0 16px;flex-wrap:wrap}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#666}
+.answer-label{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.attempts-label{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;margin-top:12px}
 </style>
 </head>
 <body>
@@ -127,38 +95,42 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
   <div class="top-bar">
     <span class="game-title">Ketch</span>
     <div class="top-btns">
+      <button class="panel-btn" onclick="openPanel('panel-info')">info</button>
       <button class="panel-btn" onclick="openPanel('panel-teams')">teams</button>
       <button class="panel-btn" onclick="openPanel('panel-hints')">race hints</button>
     </div>
   </div>
-
   <div class="attempt-row">
     <span class="attempt-label">attempt</span>
     <div id="attempt-dots" style="display:flex;gap:5px"></div>
     <span class="attempt-label" id="attempt-text">1 of 4</span>
   </div>
+  <p class="instruction" id="instruction">Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
+  <div class="chart-wrap" id="chart-wrap">
+    <svg id="bump-svg"></svg>
+  </div>
+  <button class="btn btn-primary" id="submit-btn" onclick="submitPrediction()">submit prediction →</button>
+</div>
 
-  <p class="instruction" id="instruction">Who will catch whom in each race? Swap positions for the next round. Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
-
-  <div class="desktop-layout">
-    <div class="chart-col">
-      <div class="chart-wrap" id="chart-wrap">
-        <svg id="bump-svg"></svg>
-      </div>
-      <div class="race-schedule-panel desktop-only">
-        <div class="rsp-title">race schedule</div>
-        <div id="rsp-rows"></div>
-      </div>
+<!-- info popup -->
+<div class="overlay hidden" id="panel-info">
+  <div class="panel">
+    <div class="panel-title">how to play <button class="close-btn" onclick="closePanel('panel-info')">×</button></div>
+    <div class="info-section">
+      <div class="info-section-title">the race</div>
+      <p class="info-para">Five competitors race across four stages. In each stage, a competitor can catch the one directly ahead — bumping them down and taking their place for the next stage.</p>
+      <p class="info-para">Competitors have four attributes — Power, Agility, Stamina and Tactics — which determine how well they perform in each race type. Check <em>race hints</em> to see which attributes matter most in each stage.</p>
     </div>
-    <div class="stats-col desktop-only">
-      <div class="stats-panel">
-        <div class="stats-panel-title">teams</div>
-        <div id="stats-entries"></div>
-      </div>
+    <div class="info-section">
+      <div class="info-section-title">your prediction</div>
+      <p class="info-para">Tap a dot on the bump chart to select a competitor. Then tap ▲ above their dot to predict they bump up, or ▼ below to predict they get bumped down. Tap × to remove a prediction.</p>
+      <p class="info-para">Races lock in consecutively from Race 1 — so Race 2 can only lock once Race 1 is correct. You have four attempts to predict all four races perfectly.</p>
+    </div>
+    <div class="info-section">
+      <div class="info-section-title">scoring</div>
+      <p class="info-para">After each submission you'll see how many positions you got right per race. The goal is to solve it in as few attempts as possible. The final screen reveals the correct bump chart so you can see where your prediction went wrong.</p>
     </div>
   </div>
-
-  <button class="btn btn-primary" id="submit-btn" onclick="submitPrediction()">submit prediction →</button>
 </div>
 
 <!-- teams popup -->
@@ -169,7 +141,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
   </div>
 </div>
 
-<!-- race hints popup (desc + weights combined) -->
+<!-- race hints popup -->
 <div class="overlay hidden" id="panel-hints">
   <div class="panel">
     <div class="panel-title">race hints <button class="close-btn" onclick="closePanel('panel-hints')">×</button></div>
@@ -187,36 +159,42 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
   </div>
 </div>
 
-<!-- final -->
+<!-- final screen -->
 <div class="screen hidden" id="screen-final">
-  <div class="game-title">Ketch</div>
-  <div class="divider"></div>
+  <div class="game-title" style="margin-bottom:2px">Ketch</div>
+  <div style="font-size:13px;color:#666;margin-bottom:12px" id="final-score-line"></div>
+  <div class="answer-label">the correct chart</div>
+  <div class="chart-wrap" id="answer-chart-wrap">
+    <svg id="answer-svg"></svg>
+  </div>
+  <div class="attempts-label">your attempts</div>
   <div id="final-body"></div>
+  <button class="btn" style="margin-top:10px;padding:10px 20px;font-size:14px" id="copy-btn" onclick="copyShare()">copy result</button>
   <div class="divider"></div>
   <button class="btn btn-primary" onclick="newGame()">new puzzle →</button>
 </div>
 
 <script>
 const NAME_POOL=[
-  "Fionn","Beinn","Sorcha","Calder","Ruar","Tàmhas",
-  "Zola","Kofi","Amara","Obasi",
+  "Nevis","Drakon","Sorcha","Albex","Veyra","Tàmhas",
+  "Zola","Kofi","Strata","Obasi",
   "Yara","Tendo","Amina",
-  "Seren","Leif","Saga",
+  "Seren","Lomara","Saga",
   "Lev","Maren","Petra",
-  "Ren","Arya","Nadia","Kiran",
-  "Zahra","Idris","Cyrus",
-  "Zara","Vela","Cruz","Luma"
+  "Ren","Arya","Nitrox","Quantis",
+  "Zypher","Idris","Cyrus",
+  "Caledon","Vela","Cruz","Luma"
 ];
 const COLORS=["#E24B4A","#378ADD","#9B59B6","#F39C12","#1D9E75"];
 const RACE_TYPES=[
-  {label:"The Dash",        desc:"Explosive short-course blast — power and agility separate the field early.",    w:{pow:0.40,agi:0.40,sta:0.10,tac:0.10}},
-  {label:"The Long Haul",     desc:"A long grinding test — those without stamina will fade in the final stretch.",  w:{pow:0.20,agi:0.10,sta:0.60,tac:0.10}},
-  {label:"Winder Trail",     desc:"A twisty, varying course — agility and tactics are everything here.",        w:{pow:0.10,agi:0.40,sta:0.10,tac:0.40}},
-  {label:"Rough Gorge", desc:"Harsh, unforgiving terrain — power and stamina hold position.",                 w:{pow:0.45,agi:0.05,sta:0.40,tac:0.10}},
-  {label:"Multi-trail",      desc:"Many options, choice is key over this distance — tactics and stamina decide it.",           w:{pow:0.10,agi:0.10,sta:0.30,tac:0.50}},
-  {label:"Night Flight",    desc:"Low visibility and high pressure — agility and tactics come to the fore.",      w:{pow:0.10,agi:0.30,sta:0.20,tac:0.40}},
-  {label:"The Climb",    desc:"Punishing elevation — power and stamina are the great levellers.",              w:{pow:0.40,agi:0.10,sta:0.45,tac:0.05}},
-  {label:"Jungle Gym",   desc:"Climbs, jumps, predicting next steps — tactics and agility reward the smart mover.", w:{pow:0.10,agi:0.35,sta:0.15,tac:0.40}}
+  {label:"The Dash",      desc:"Explosive short-course blast — power and agility separate the field early.",         w:{pow:0.40,agi:0.40,sta:0.10,tac:0.10}},
+  {label:"The Long Haul", desc:"A long grinding test — those without stamina will fade in the final stretch.",       w:{pow:0.20,agi:0.10,sta:0.60,tac:0.10}},
+  {label:"Winder Trail",  desc:"A long, twisty course — agility and tactics are everything here.",                   w:{pow:0.10,agi:0.20,sta:0.30,tac:0.40}},
+  {label:"Rough Gorge",   desc:"Harsh, unforgiving terrain — power and stamina hold position.",                      w:{pow:0.45,agi:0.05,sta:0.40,tac:0.10}},
+  {label:"Multi-trail",   desc:"Many options, choice is key — tactics and stamina decide it.",                       w:{pow:0.10,agi:0.10,sta:0.30,tac:0.50}},
+  {label:"Night Flight",  desc:"Low visibility and high pressure — agility and night navigation come to the fore.",  w:{pow:0.10,agi:0.20,sta:0.20,tac:0.50}},
+  {label:"The Climb",     desc:"Punishing elevation — power and stamina are the great levellers.",                   w:{pow:0.40,agi:0.10,sta:0.45,tac:0.05}},
+  {label:"Jungle Gym",    desc:"Climbs, jumps, predicting next steps — tactics and agility reward the smart mover.",w:{pow:0.10,agi:0.35,sta:0.15,tac:0.40}}
 ];
 const STAT_KEYS=['pow','agi','sta','tac'];
 const STAT_LABELS={pow:'Power',agi:'Agility',sta:'Stamina',tac:'Tactics'};
@@ -299,20 +277,15 @@ function newGame(){
   }
   bumps=Array.from({length:NR},()=>new Set());
   attempt=0;lockedRaces=[];attemptHistory=[];selComp=null;selRace=null;
-  renderUI();
+  renderTeamsPopup();
+  renderHints();
+  renderAttempts();
   document.getElementById('submit-btn').textContent='submit prediction →';
   document.getElementById('screen-main').classList.remove('hidden');
   document.getElementById('screen-final').classList.add('hidden');
   document.getElementById('reveal-overlay').classList.add('hidden');
-  setTimeout(drawChart,60);
-}
-
-function renderUI(){
-  renderAttempts();
-  renderDesktopStats();
-  renderDesktopRaces();
-  renderTeamsPopup();
-  renderHints();
+  setInstruction('Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
+  requestAnimationFrame(()=>requestAnimationFrame(drawChart));
 }
 
 function renderAttempts(){
@@ -321,31 +294,10 @@ function renderAttempts(){
   document.getElementById('attempt-text').textContent=`${attempt+1} of ${MAX_ATT}`;
 }
 
-function renderDesktopStats(){
-  document.getElementById('stats-entries').innerHTML=game.competitors.map(c=>`
-    <div class="stat-entry">
-      <div class="stat-name-row"><span class="stat-dot" style="background:${c.color}"></span><span style="color:${c.color}">${c.name}</span></div>
-      ${STAT_KEYS.map(k=>`<div class="stat-bar-row">
-        <span class="stat-icon" style="color:${c.color}">${STAT_ICONS[k]}</span>
-        <div class="bar-track"><div class="bar-fill" style="width:${c[k]/9*100}%;background:${c.color};opacity:0.75"></div></div>
-        <span class="stat-num">${c[k]}</span>
-      </div>`).join('')}
-    </div>`).join('');
-}
-
-function renderDesktopRaces(){
-  document.getElementById('rsp-rows').innerHTML=game.races.map((r,i)=>`
-    <div class="rsp-row">
-      <span class="rsp-num">${i+1}</span>
-      <span class="rsp-label">${r.label}</span>
-      <span class="rsp-desc">${r.desc}</span>
-    </div>`).join('');
-}
-
 function renderTeamsPopup(){
   document.getElementById('popup-teams-grid').innerHTML=game.competitors.map(c=>`
     <div class="popup-card">
-      <div class="popup-card-name"><span class="stat-dot" style="background:${c.color};width:9px;height:9px"></span><span style="color:${c.color}">${c.name}</span></div>
+      <div class="popup-card-name"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${c.color};margin-right:4px"></span><span style="color:${c.color}">${c.name}</span></div>
       ${STAT_KEYS.map(k=>`<div class="popup-bar-row">
         <span class="popup-bar-label">${STAT_LABELS[k]}</span>
         <div class="popup-bar-track"><div class="popup-bar-fill" style="width:${c[k]/9*100}%;background:${c.color};opacity:0.8"></div></div>
@@ -355,15 +307,11 @@ function renderTeamsPopup(){
 }
 
 function renderHints(){
-  // Combined: description + attribute weights per race
   document.getElementById('hints-list').innerHTML=game.races.map((r,i)=>{
     const chips=Object.entries(r.w).sort((a,b)=>b[1]-a[1]).map(([k,v])=>
       `<span class="wchip ${v>=0.35?'high':''}">${STAT_LABELS[k]} ${Math.round(v*100)}%</span>`).join('');
     return`<div class="hints-race-block">
-      <div class="hints-race-head">
-        <span class="hints-race-num">${i+1}</span>
-        <span class="hints-race-label">${r.label}</span>
-      </div>
+      <div class="hints-race-head"><span class="hints-race-num">${i+1}</span><span class="hints-race-label">${r.label}</span></div>
       <div class="hints-race-desc">${r.desc}</div>
       <div class="hints-chips">${chips}</div>
     </div>`;
@@ -373,112 +321,95 @@ function renderHints(){
 function setInstruction(t){document.getElementById('instruction').textContent=t}
 
 // ── CHART ─────────────────────────────────────────────────────
-// No right-side labels, no horizontal scroll — fits within screen
-// Vertical race name labels under each column
-const CH=340,PADT=30,PADB=110,DOT_R=10; // extra PADB for vertical labels
-
-function getChartW(){
-  const wrap=document.getElementById('chart-wrap');
+const CH=360,PADT=22,PADB=100,DOT_R=10;
+function getChartW(wrapId){
+  const wrap=document.getElementById(wrapId||'chart-wrap');
   return wrap?wrap.getBoundingClientRect().width||window.innerWidth-24:window.innerWidth-24;
 }
 function getPADL(){return window.innerWidth<520?52:62}
-function getPADR(){return 16} // no right labels needed, just a small margin
+function getPADR(){return 16}
 function colX(ci,W,PADL,PADR){return PADL+ci*((W-PADL-PADR)/(NCOLS-1))}
 function rowY(row){return PADT+row*((CH-PADT-PADB)/(NC-1))}
-
 function se(tag,attrs){
   const e=document.createElementNS('http://www.w3.org/2000/svg',tag);
   for(const[k,v]of Object.entries(attrs))e.setAttribute(k,String(v));
   return e;
 }
 
-function drawChart(){
-  const svg=document.getElementById('bump-svg');
-  const W=getChartW();
+function buildChart(svgEl,rows,locked,interactive,wrapId){
+  const W=getChartW(wrapId);
   const PADL=getPADL(),PADR=getPADR();
-  svg.setAttribute('viewBox',`0 0 ${W} ${CH}`);
-  svg.setAttribute('width',String(W));
-  svg.setAttribute('height',String(CH));
-  svg.style.display='block';
-  svg.innerHTML='';
-
-  const rows=computeRows();
-  const colorOf=Object.fromEntries(game.competitors.map(c=>[c.name,c.color]));
+  svgEl.setAttribute('viewBox',`0 0 ${W} ${CH}`);
+  svgEl.setAttribute('width',String(W));
+  svgEl.setAttribute('height',String(CH));
+  svgEl.style.display='block';
+  while(svgEl.firstChild)svgEl.removeChild(svgEl.firstChild);
   const cx=ci=>colX(ci,W,PADL,PADR);
+  const colorOf=Object.fromEntries(game.competitors.map(c=>[c.name,c.color]));
 
   // grid
   for(let r=0;r<NC;r++){
-    svg.appendChild(se('line',{x1:PADL,y1:rowY(r),x2:W-PADR,y2:rowY(r),stroke:'#ebebeb','stroke-width':0.5}));
+    svgEl.appendChild(se('line',{x1:PADL,y1:rowY(r),x2:W-PADR,y2:rowY(r),stroke:'#ebebeb','stroke-width':0.5}));
   }
-
-  // vertical race name labels + race number above chart
+  // column labels
   for(let ci=0;ci<NCOLS;ci++){
-    const isFinal=ci===NR;
-    const locked=!isFinal&&lockedRaces.includes(ci);
+    const isFinal=ci===NR,lock=!isFinal&&locked&&locked.includes(ci);
     const x=cx(ci);
-
     if(isFinal){
-      // "Final" written horizontally at bottom
       const t=se('text',{x,y:CH-6,'text-anchor':'middle','font-size':9,fill:'#111','font-weight':600});
-      t.textContent='Final';
-      svg.appendChild(t);
+      t.textContent='Final';svgEl.appendChild(t);
     } else {
-      // Race number at top
-      const rnum=se('text',{x,y:PADT - 15,'text-anchor':'middle','font-size':9,fill:locked?'#B45309':'#bbb'});
-      rnum.textContent=locked?`R${ci+1}▲`:`R${ci+1}`;
-      svg.appendChild(rnum);
-
-      // Race name written vertically below chart area
-      const raceName=game.races[ci].label;
-      const LABEL_Y = CH - PADB + 25;
-
-const g = se('g', {
-  transform: `translate(${x}, ${LABEL_Y}) rotate(-45)`
-});
+      const rn=se('text',{x,y:12,'text-anchor':'middle','font-size':9,fill:lock?'#B45309':'#bbb'});
+      rn.textContent=lock?`R${ci+1}▲`:`R${ci+1}`;svgEl.appendChild(rn);
+      const g=se('g',{transform:`translate(${x},${CH-PADB+22}) rotate(-45)`});
       const t=se('text',{'text-anchor':'end','dominant-baseline':'middle','font-size':9,
-        fill:locked?'#B45309':'#888','font-weight':locked?600:400});
-      t.textContent=raceName;
-      g.appendChild(t);
-      svg.appendChild(g);
+        fill:lock?'#B45309':'#888','font-weight':lock?600:400});
+      t.textContent=game.races[ci].label;g.appendChild(t);svgEl.appendChild(g);
     }
   }
 
-  // competitor paths — left label only, no right label
+  // competitor lines + dots
   game.competitors.forEach(comp=>{
-    const {name,color}=comp,isSel=selComp===name;
+    const {name,color}=comp;
+    const isSel=interactive&&selComp===name;
     const ra=rows[name];
     let d=`M${cx(0)},${rowY(ra[0])}`;
     for(let ci=1;ci<NCOLS;ci++)d+=` L${cx(ci)},${rowY(ra[ci])}`;
-    svg.appendChild(se('path',{d,fill:'none',stroke:color,'stroke-width':isSel?3.5:2.5,
-      'stroke-linecap':'round','stroke-linejoin':'round',opacity:isSel?1:0.8}));
-
-    // left label only
+    svgEl.appendChild(se('path',{d,fill:'none',stroke:color,'stroke-width':isSel?3.5:2.5,
+      'stroke-linecap':'round','stroke-linejoin':'round',opacity:isSel?1:0.85}));
+    // left label
     const lt=se('text',{x:PADL-DOT_R-5,y:rowY(ra[0]),'text-anchor':'end','dominant-baseline':'middle',
       'font-size':11,'font-weight':600,fill:color});
-    lt.textContent=name;svg.appendChild(lt);
-
+    lt.textContent=name;svgEl.appendChild(lt);
     // dots
-    for(let ci=0;ci<NR;ci++){
-      const lock=lockedRaces.includes(ci),here=isSel&&selRace===ci;
+    for(let ci=0;ci<NCOLS;ci++){
+      const isFinal=ci===NR;
+      const lock=!isFinal&&locked&&locked.includes(ci);
+      const here=interactive&&isSel&&selRace===ci&&!isFinal;
       const x=cx(ci),y=rowY(ra[ci]),r=here?DOT_R+3:DOT_R;
-      const dot=se('circle',{cx:x,cy:y,r,fill:lock||here?color:'#fff',stroke:color,'stroke-width':2,
-        opacity:lock?0.5:1,cursor:lock?'default':'pointer'});
-      if(!lock){
+      const dot=se('circle',{cx:x,cy:y,r,
+        fill:(lock||here||!interactive)?color:(isFinal?'#f0f0f0':'#fff'),
+        stroke:color,'stroke-width':isFinal?1:2,
+        opacity:lock?0.5:isFinal?0.4:1,
+        cursor:(interactive&&!lock&&!isFinal)?'pointer':'default'});
+      if(interactive&&!lock&&!isFinal){
         dot.addEventListener('click',e=>{e.stopPropagation();onDotClick(name,ci)});
         dot.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();onDotClick(name,ci)},{passive:false});
       }
-      svg.appendChild(dot);
-      const nt=se('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':9,'font-weight':600,
-        fill:lock||here?'#fff':color,'pointer-events':'none'});
-      nt.textContent=ra[ci]+1;svg.appendChild(nt);
+      svgEl.appendChild(dot);
+      if(!isFinal){
+        const nt=se('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':9,'font-weight':600,
+          fill:(lock||here||!interactive)?'#fff':color,'pointer-events':'none'});
+        nt.textContent=ra[ci]+1;svgEl.appendChild(nt);
+      }
     }
-    // final dot
-    svg.appendChild(se('circle',{cx:cx(NR),cy:rowY(ra[NR]),r:DOT_R,fill:'#f0f0f0',stroke:color,'stroke-width':1,opacity:0.4}));
   });
+
+  if(!interactive) return;
 
   // × for active bumps
   for(let ri=0;ri<NR;ri++){
-    if(lockedRaces.includes(ri))continue;
+    if(locked&&locked.includes(ri))continue;
     const pos=orderAtCol(ri);
     for(const bumper of bumps[ri]){
       const row=pos.indexOf(bumper);if(row<1)continue;
@@ -489,44 +420,56 @@ const g = se('g', {
       xt.textContent='×';
       bg.addEventListener('click',e=>{e.stopPropagation();removeBump(ri,bumper)});
       bg.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();removeBump(ri,bumper)},{passive:false});
-      svg.appendChild(bg);svg.appendChild(xt);
+      svgEl.appendChild(bg);svgEl.appendChild(xt);
     }
   }
 
   // ▲ ▼ targets
-  if(selComp&&selRace!==null&&!lockedRaces.includes(selRace)){
+  if(selComp&&selRace!==null&&!(locked&&locked.includes(selRace))){
     const row=rows[selComp][selRace];
     const x=cx(selRace),pos=orderAtCol(selRace);
-    const hitR=15;
-
     if(row>0&&!bumps[selRace].has(selComp)){
       const ty=rowY(row-1);
-      svg.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
+      svgEl.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
         stroke:'rgba(0,0,0,0.2)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
-      const hit=se('circle',{cx:x,cy:ty,r:hitR,fill:'rgba(0,0,0,0)',cursor:'pointer'});
+      const hit=se('circle',{cx:x,cy:ty,r:15,fill:'rgba(0,0,0,0)',cursor:'pointer'});
       const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,
         fill:'rgba(0,0,0,0.25)','pointer-events':'none'});
       lbl.textContent='▲';
       hit.addEventListener('click',e=>{e.stopPropagation();addBump(selRace,selComp)});
       hit.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();addBump(selRace,selComp)},{passive:false});
-      svg.appendChild(hit);svg.appendChild(lbl);
+      svgEl.appendChild(hit);svgEl.appendChild(lbl);
     }
     if(row<NC-1){
       const below=pos[row+1];
       if(below&&!bumps[selRace].has(below)){
         const ty=rowY(row+1);
-        svg.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
+        svgEl.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
           stroke:'rgba(0,0,0,0.2)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
-        const hit=se('circle',{cx:x,cy:ty,r:hitR,fill:'rgba(0,0,0,0)',cursor:'pointer'});
+        const hit=se('circle',{cx:x,cy:ty,r:15,fill:'rgba(0,0,0,0)',cursor:'pointer'});
         const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,
           fill:'rgba(0,0,0,0.25)','pointer-events':'none'});
         lbl.textContent='▼';
         hit.addEventListener('click',e=>{e.stopPropagation();addBump(selRace,below)});
         hit.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();addBump(selRace,below)},{passive:false});
-        svg.appendChild(hit);svg.appendChild(lbl);
+        svgEl.appendChild(hit);svgEl.appendChild(lbl);
       }
     }
   }
+}
+
+function drawChart(){
+  buildChart(document.getElementById('bump-svg'),computeRows(),lockedRaces,true,'chart-wrap');
+}
+
+function drawAnswerChart(){
+  // build actual rows from history
+  const actualRows={};
+  game.competitors.forEach((c,i)=>{actualRows[c.name]=[i]});
+  for(let ri=0;ri<NR;ri++){
+    [...history[ri].standings].sort((a,b)=>a.pos-b.pos).forEach((c,row)=>actualRows[c.name].push(row));
+  }
+  buildChart(document.getElementById('answer-svg'),actualRows,[],false,'answer-chart-wrap');
 }
 
 function onDotClick(name,race){
@@ -534,10 +477,9 @@ function onDotClick(name,race){
   if(selComp===name&&selRace===race){selComp=null;selRace=null;}
   else{selComp=name;selRace=race;}
   setInstruction(selComp?`${selComp} selected — tap ▲ to bump up, ▼ to be bumped down, × to remove.`
-    :'Who will catch who in each race, and swap positions for the next stage? Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
+    :'Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
   drawChart();
 }
-
 function addBump(race,bumper){
   const pos=orderAtCol(race);
   const row=pos.indexOf(bumper);if(row<1)return;
@@ -552,7 +494,6 @@ function addBump(race,bumper){
   }
   selComp=null;selRace=null;drawChart();
 }
-
 function removeBump(race,bumper){
   bumps[race].delete(bumper);selComp=null;selRace=null;
   setInstruction('Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
@@ -563,16 +504,13 @@ function submitPrediction(){
   const pred=Array.from({length:NR},(_,ri)=>orderAtCol(ri+1));
   attemptHistory.push(pred.map(c=>[...c]));
   attempt++;
-
-  // find how far the consecutive lock chain reaches
-  let newLockUpTo=-1;
   for(let ri=0;ri<NR;ri++){
-    if(lockedRaces.includes(ri)){newLockUpTo=ri;continue;}
+    if(lockedRaces.includes(ri))continue;
+    if(ri>0&&!lockedRaces.includes(ri-1))break;
     const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
-    if(pred[ri].every((n,i)=>actual[i]===n)){lockedRaces.push(ri);newLockUpTo=ri;}
+    if(pred[ri].every((n,i)=>actual[i]===n))lockedRaces.push(ri);
     else break;
   }
-
   const solved=lockedRaces.length===NR,failed=attempt>=MAX_ATT&&!solved;
   selComp=null;selRace=null;
   renderAttempts();drawChart();
@@ -586,15 +524,11 @@ function showReveal(solved,failed,pred){
     solved?'All races correct — well done!'
     :failed?`Game over. ${lk} of ${NR} races correct.`
     :`${lk} of ${NR} race${lk!==1?'s':''} locked.${lk>0?' Keep going!':' Try again.'}`;
-
-  // find first unlocked race — everything after that can't lock due to chain rule
   const firstUnlocked=Array.from({length:NR},(_,i)=>i).find(ri=>!lockedRaces.includes(ri));
-
   document.getElementById('rev-rows').innerHTML=game.races.map((_,ri)=>{
     const locked=lockedRaces.includes(ri);
     const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
     const correct=pred[ri].filter((n,i)=>actual[i]===n).length;
-    // chain-blocked = correct (or not) but can't lock because an earlier race hasn't locked
     const chainBlocked=!locked&&ri>0&&!lockedRaces.includes(ri-1)&&firstUnlocked!==undefined&&ri>firstUnlocked;
     let badgeClass,badgeText;
     if(locked){badgeClass='locked';badgeText='locked ▲';}
@@ -608,7 +542,6 @@ function showReveal(solved,failed,pred){
       </div>
     </div>`;
   }).join('');
-
   const btn=document.getElementById('rev-btn');
   if(solved||failed){
     btn.textContent='see final result →';
@@ -622,32 +555,32 @@ function showReveal(solved,failed,pred){
 }
 
 function showFinal(solved){
-  const rows=attemptHistory.map((pred,ai)=>{
-    const medals=game.races.map((_,ri)=>{
-      const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
-      const c=pred[ri].filter((n,i)=>actual[i]===n).length;
-      return`<div class="medal medal-${medalTier(c)}" title="${c}/${NC}">●</div>`;
-    }).join('');
-    return`<div class="share-row"><span class="share-lbl">attempt ${ai+1}</span>${medals}</div>`;
-  }).join('');
+  const score=solved?`Ketch in ${attempt}`:`Not solved — ${attempt} attempt${attempt!==1?'s':''}`;
+  document.getElementById('final-score-line').textContent=score;
   const lines=attemptHistory.map((pred,ai)=>'Attempt '+(ai+1)+': '+game.races.map((_,ri)=>{
     const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
     return medalEmoji(medalTier(pred[ri].filter((n,i)=>actual[i]===n).length));
   }).join('')).join('\n');
-  const score=solved?`Ketch in ${attempt}`:`Not solved — ${attempt} attempt${attempt!==1?'s':''}`;
   window._shareText=`${score}\n${lines}`;
+  // one medal per attempt — medal reflects how many races were correct that attempt
+  // gold=4 races, silver=3, bronze=2, none=0-1
+  const attemptMedals=attemptHistory.map((pred,ai)=>{
+    const racesCorrect=game.races.filter((_,ri)=>{
+      const actual=[...history[ri].standings].sort((a,b)=>a.pos-b.pos).map(c=>c.name);
+      return pred[ri].every((n,i)=>actual[i]===n);
+    }).length;
+    const tier=racesCorrect===NR?'gold':racesCorrect===NR-1?'silver':racesCorrect===NR-2?'bronze':'none';
+    return`<div style="display:flex;flex-direction:column;align-items:center;gap:3px">
+      <div class="medal medal-${tier}" title="${racesCorrect}/${NR} races correct">●</div>
+      <span style="font-size:9px;color:#999">${ai+1}</span>
+    </div>`;
+  }).join('');
   document.getElementById('final-body').innerHTML=`
-    <div class="score-big">${score}</div>
-    <div class="legend">
-      <div class="legend-item"><div class="medal medal-gold" style="width:22px;height:22px;font-size:11px">●</div><span>5/5</span></div>
-      <div class="legend-item"><div class="medal medal-silver" style="width:22px;height:22px;font-size:11px">●</div><span>3/5</span></div>
-      <div class="legend-item"><div class="medal medal-bronze" style="width:22px;height:22px;font-size:11px">●</div><span>1–2/5</span></div>
-      <div class="legend-item"><div class="medal medal-none" style="width:22px;height:22px;font-size:11px">●</div><span>0/5</span></div>
-    </div>
-    ${rows}
-    <button class="btn" style="margin-top:12px" id="copy-btn" onclick="copyShare()">copy result</button>`;
+    <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">${attemptMedals}</div>
+    <div style="margin-top:8px;font-size:11px;color:#bbb">gold=4 races · silver=3 · bronze=2 · grey=fewer</div>`;
   document.getElementById('screen-main').classList.add('hidden');
   document.getElementById('screen-final').classList.remove('hidden');
+  requestAnimationFrame(()=>requestAnimationFrame(drawAnswerChart));
 }
 
 function copyShare(){
@@ -659,11 +592,9 @@ function copyShare(){
 
 function openPanel(id){document.getElementById(id).classList.remove('hidden')}
 function closePanel(id){document.getElementById(id).classList.add('hidden')}
-
 let resizeTimer;
 window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(drawChart,120)});
 window.addEventListener('load',newGame);
 </script>
 </body>
 </html>
-
