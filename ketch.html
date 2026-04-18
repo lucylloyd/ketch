@@ -18,7 +18,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
 .adot{width:9px;height:9px;border-radius:50%;background:#ccc;display:inline-block}
 .adot.used{background:#999}
 .adot.active{background:#111}
-.instruction{font-size:13px;color:#666;margin-bottom:10px;line-height:1.5;min-height:20px}
+.instruction{font-size:13px;color:#666;margin-bottom:4px;line-height:1.5;min-height:0}
 .chart-wrap{width:100%;margin-bottom:8px;overflow:hidden}
 .chart-wrap svg{display:block;width:100%}
 .btn{display:block;width:100%;border:1px solid #aaa;border-radius:10px;padding:14px 20px;font-size:16px;cursor:pointer;color:#111;text-align:center;margin-top:10px;background:#fff;-webkit-appearance:none;appearance:none}
@@ -105,7 +105,7 @@ html,body{min-height:100%;background:#fff;color:#111;font-family:-apple-system,B
     <div id="attempt-dots" style="display:flex;gap:5px"></div>
     <span class="attempt-label" id="attempt-text">1 of 4</span>
   </div>
-  <p class="instruction" id="instruction">Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.</p>
+  <p class="instruction" id="instruction"></p>
   <div class="chart-wrap" id="chart-wrap">
     <svg id="bump-svg"></svg>
   </div>
@@ -284,7 +284,7 @@ function newGame(){
   document.getElementById('screen-main').classList.remove('hidden');
   document.getElementById('screen-final').classList.add('hidden');
   document.getElementById('reveal-overlay').classList.add('hidden');
-  setInstruction('Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
+  setInstruction('');
   requestAnimationFrame(()=>requestAnimationFrame(drawChart));
 }
 
@@ -356,11 +356,14 @@ function buildChart(svgEl,rows,locked,interactive,wrapId){
     const isFinal=ci===NR,lock=!isFinal&&locked&&locked.includes(ci);
     const x=cx(ci);
     if(isFinal){
-      const t=se('text',{x,y:CH-6,'text-anchor':'middle','font-size':9,fill:'#111','font-weight':600});
-      t.textContent='Final';svgEl.appendChild(t);
+      const g=se('g',{transform:`translate(${x},${CH-PADB+22}) rotate(-45)`});
+      const t=se('text',{'text-anchor':'end','dominant-baseline':'middle','font-size':9,fill:'#111','font-weight':600});
+      t.textContent='Final Position';g.appendChild(t);svgEl.appendChild(g);
     } else {
-      const rn=se('text',{x,y:12,'text-anchor':'middle','font-size':9,fill:lock?'#B45309':'#bbb'});
-      rn.textContent=lock?`R${ci+1}▲`:`R${ci+1}`;svgEl.appendChild(rn);
+      if(lock){
+        const rn=se('text',{x,y:12,'text-anchor':'middle','font-size':9,fill:'#B45309','font-weight':600});
+        rn.textContent=`▲`;svgEl.appendChild(rn);
+      }
       const g=se('g',{transform:`translate(${x},${CH-PADB+22}) rotate(-45)`});
       const t=se('text',{'text-anchor':'end','dominant-baseline':'middle','font-size':9,
         fill:lock?'#B45309':'#888','font-weight':lock?600:400});
@@ -433,12 +436,9 @@ function buildChart(svgEl,rows,locked,interactive,wrapId){
       svgEl.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
         stroke:'rgba(0,0,0,0.2)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
       const hit=se('circle',{cx:x,cy:ty,r:15,fill:'rgba(0,0,0,0)',cursor:'pointer'});
-      const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,
-        fill:'rgba(0,0,0,0.25)','pointer-events':'none'});
-      lbl.textContent='▲';
       hit.addEventListener('click',e=>{e.stopPropagation();addBump(selRace,selComp)});
       hit.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();addBump(selRace,selComp)},{passive:false});
-      svgEl.appendChild(hit);svgEl.appendChild(lbl);
+      svgEl.appendChild(hit);
     }
     if(row<NC-1){
       const below=pos[row+1];
@@ -447,12 +447,9 @@ function buildChart(svgEl,rows,locked,interactive,wrapId){
         svgEl.appendChild(se('circle',{cx:x,cy:ty,r:DOT_R+5,fill:'rgba(255,255,255,0.01)',
           stroke:'rgba(0,0,0,0.2)','stroke-width':1.5,'stroke-dasharray':'4,3','pointer-events':'none'}));
         const hit=se('circle',{cx:x,cy:ty,r:15,fill:'rgba(0,0,0,0)',cursor:'pointer'});
-        const lbl=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':12,
-          fill:'rgba(0,0,0,0.25)','pointer-events':'none'});
-        lbl.textContent='▼';
         hit.addEventListener('click',e=>{e.stopPropagation();addBump(selRace,below)});
         hit.addEventListener('touchend',e=>{e.preventDefault();e.stopPropagation();addBump(selRace,below)},{passive:false});
-        svgEl.appendChild(hit);svgEl.appendChild(lbl);
+        svgEl.appendChild(hit);
       }
     }
   }
@@ -476,8 +473,7 @@ function onDotClick(name,race){
   if(lockedRaces.includes(race))return;
   if(selComp===name&&selRace===race){selComp=null;selRace=null;}
   else{selComp=name;selRace=race;}
-  setInstruction(selComp?`${selComp} selected — tap ▲ to bump up, ▼ to be bumped down, × to remove.`
-    :'Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
+  setInstruction(selComp?`${selComp} selected — tap a dashed circle to bump, or × to remove.`:'')
   drawChart();
 }
 function addBump(race,bumper){
@@ -490,13 +486,13 @@ function addBump(race,bumper){
     bumps[race].add(bumper);
   } else {
     setInstruction("Can't add — one of those competitors is already in a bump this race.");
-    setTimeout(()=>setInstruction('Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.'),2000);
+    setTimeout(()=>setInstruction(''),2000);
   }
   selComp=null;selRace=null;drawChart();
 }
 function removeBump(race,bumper){
   bumps[race].delete(bumper);selComp=null;selRace=null;
-  setInstruction('Tap a dot to select, then tap ▲ above or ▼ below to predict a bump. Tap × to remove.');
+  setInstruction('');
   drawChart();
 }
 
